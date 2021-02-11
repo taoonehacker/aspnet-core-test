@@ -1,0 +1,10 @@
+.idea/
+.vs
+bin/
+obj/
+*.suo
+*.user
+*.sln.docstates
+*.pdb
+packages/
+

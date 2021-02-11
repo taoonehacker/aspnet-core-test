@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace Tao.Project.Console
 {
@@ -6,7 +7,14 @@ namespace Tao.Project.Console
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // new HostBuilder().ConfigureServices(svcs => svcs.AddSingleton<IHostedService, PerformanceMetricsCollector>())
+            //     .Build()
+            //     .Run();
+
+            new HostBuilder()
+                .ConfigureServices(svcs => svcs.AddHostedService<PerformanceMetricsCollector>())
+                .Build()
+                .Run();
         }
     }
 }

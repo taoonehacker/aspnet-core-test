@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Tao.Project.Console
 {
@@ -13,7 +14,6 @@ namespace Tao.Project.Console
             //     .Run();
 
             var collector = new FakeMetricsCollector();
-            System.Console.WriteLine($"environmentName:{args[0]}");
             new HostBuilder()
                 .ConfigureHostConfiguration(builder => builder.AddCommandLine(args))
                 .ConfigureAppConfiguration((context, builder) => builder
@@ -27,6 +27,7 @@ namespace Tao.Project.Console
                         .AddHostedService<PerformanceMetricsCollector>()
                         .AddOptions().Configure<MetricsCollectionOptions>(context.Configuration.GetSection("MetricsCollection"))
                 )
+                .ConfigureLogging(builder => builder.AddConsole())
                 .Build()
                 .Run();
         }

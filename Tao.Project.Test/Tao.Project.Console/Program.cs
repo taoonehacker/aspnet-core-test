@@ -27,7 +27,8 @@ namespace Tao.Project.Console
                         .AddHostedService<PerformanceMetricsCollector>()
                         .AddOptions().Configure<MetricsCollectionOptions>(context.Configuration.GetSection("MetricsCollection"))
                 )
-                .ConfigureLogging(builder => builder.AddConsole())
+                .ConfigureLogging((context, builder) => builder
+                    .AddConfiguration(context.Configuration.GetSection("Logging")))
                 .Build()
                 .Run();
         }

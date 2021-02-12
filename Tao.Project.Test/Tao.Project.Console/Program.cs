@@ -11,8 +11,14 @@ namespace Tao.Project.Console
             //     .Build()
             //     .Run();
 
+            var collector = new FakeMetricsCollector();
             new HostBuilder()
-                .ConfigureServices(svcs => svcs.AddHostedService<PerformanceMetricsCollector>())
+                .ConfigureServices(svcs =>
+                    svcs.AddSingleton<IPerformanceMetricsCollector>(collector)
+                        .AddSingleton<IMemoryMetricsCollector>(collector)
+                        .AddSingleton<INetWorkMetricsCollector>(collector)
+                        .AddSingleton<IMetricsDeliverer, FakeMetricsDelivever>()
+                        .AddHostedService<PerformanceMetricsCollector>())
                 .Build()
                 .Run();
         }

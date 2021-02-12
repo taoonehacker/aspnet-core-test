@@ -13,8 +13,12 @@ namespace Tao.Project.Console
             //     .Run();
 
             var collector = new FakeMetricsCollector();
+            System.Console.WriteLine($"environmentName:{args[0]}");
             new HostBuilder()
-                .ConfigureAppConfiguration(builder => builder.AddJsonFile("appSettings.json"))
+                .ConfigureHostConfiguration(builder => builder.AddCommandLine(args))
+                .ConfigureAppConfiguration((context, builder) => builder
+                    .AddJsonFile("appSettings.json", optional: false)
+                    .AddJsonFile($"appSettings.{context.HostingEnvironment.EnvironmentName}.json", optional: true))
                 .ConfigureServices((context, svcs) =>
                     svcs.AddSingleton<IPerformanceMetricsCollector>(collector)
                         .AddSingleton<IMemoryMetricsCollector>(collector)

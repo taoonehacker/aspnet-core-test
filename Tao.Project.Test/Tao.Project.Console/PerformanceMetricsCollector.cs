@@ -9,7 +9,7 @@ namespace Tao.Project.Console
     /// <summary>
     /// 性能指标收集器
     /// </summary>
-    public class PerformanceMetricsCollector : IHostedService
+    public sealed class PerformanceMetricsCollector : IHostedService
     {
         private readonly IPerformanceMetricsCollector _performanceMetricsCollector;
         private readonly IMemoryMetricsCollector _memoryMetricsCollector;

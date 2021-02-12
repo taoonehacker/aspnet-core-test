@@ -13,22 +13,27 @@ namespace Tao.Project.Console
             //     .Build()
             //     .Run();
 
-            var collector = new FakeMetricsCollector();
+            // var collector = new FakeMetricsCollector();
+            // new HostBuilder()
+            //     .ConfigureHostConfiguration(builder => builder.AddCommandLine(args))
+            //     .ConfigureAppConfiguration((context, builder) => builder
+            //         .AddJsonFile("appSettings.json", optional: false)
+            //         .AddJsonFile($"appSettings.{context.HostingEnvironment.EnvironmentName}.json", optional: true))
+            //     .ConfigureServices((context, svcs) =>
+            //         svcs.AddSingleton<IPerformanceMetricsCollector>(collector)
+            //             .AddSingleton<IMemoryMetricsCollector>(collector)
+            //             .AddSingleton<INetWorkMetricsCollector>(collector)
+            //             .AddSingleton<IMetricsDeliverer, FakeMetricsDelivever>()
+            //             .AddHostedService<PerformanceMetricsCollector>()
+            //             .AddOptions().Configure<MetricsCollectionOptions>(context.Configuration.GetSection("MetricsCollection"))
+            //     )
+            //     .ConfigureLogging((context, builder) => builder
+            //         .AddConfiguration(context.Configuration.GetSection("Logging")))
+            //     .Build()
+            //     .Run();
+
             new HostBuilder()
-                .ConfigureHostConfiguration(builder => builder.AddCommandLine(args))
-                .ConfigureAppConfiguration((context, builder) => builder
-                    .AddJsonFile("appSettings.json", optional: false)
-                    .AddJsonFile($"appSettings.{context.HostingEnvironment.EnvironmentName}.json", optional: true))
-                .ConfigureServices((context, svcs) =>
-                    svcs.AddSingleton<IPerformanceMetricsCollector>(collector)
-                        .AddSingleton<IMemoryMetricsCollector>(collector)
-                        .AddSingleton<INetWorkMetricsCollector>(collector)
-                        .AddSingleton<IMetricsDeliverer, FakeMetricsDelivever>()
-                        .AddHostedService<PerformanceMetricsCollector>()
-                        .AddOptions().Configure<MetricsCollectionOptions>(context.Configuration.GetSection("MetricsCollection"))
-                )
-                .ConfigureLogging((context, builder) => builder
-                    .AddConfiguration(context.Configuration.GetSection("Logging")))
+                .ConfigureServices(svcs => svcs.AddHostedService<FakeHostedService>())
                 .Build()
                 .Run();
         }

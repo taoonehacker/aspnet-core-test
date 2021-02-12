@@ -1,7 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace Tao.Project.Console
 {
@@ -32,10 +30,16 @@ namespace Tao.Project.Console
             //     .Build()
             //     .Run();
 
+            CreateHostBuilder(args).Build().Run();
             new HostBuilder()
                 .ConfigureServices(svcs => svcs.AddHostedService<FakeHostedService>())
                 .Build()
                 .Run();
+        }
+
+        private static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            return new HostBuilder().ConfigureServices(svcs => svcs.AddHostedService<FakeHostedService>());
         }
     }
 }

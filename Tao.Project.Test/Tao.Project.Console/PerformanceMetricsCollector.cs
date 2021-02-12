@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 
 namespace Tao.Project.Console
 {
@@ -14,23 +15,27 @@ namespace Tao.Project.Console
         private readonly IMemoryMetricsCollector _memoryMetricsCollector;
         private readonly INetWorkMetricsCollector _netWorkMetricsCollector;
         private readonly IMetricsDeliverer _metricsDeliverer;
+        private readonly TimeSpan _captureInterval;
         private IDisposable _scheduler;
 
         public PerformanceMetricsCollector(
             IPerformanceMetricsCollector performanceMetricsCollector,
             IMemoryMetricsCollector memoryMetricsCollector,
             INetWorkMetricsCollector netWorkMetricsCollector,
-            IMetricsDeliverer metricsDeliverer)
+            IMetricsDeliverer metricsDeliverer,
+            IOptions<MetricsCollectionOptions> optionsAccessor)
         {
             _performanceMetricsCollector = performanceMetricsCollector;
             _memoryMetricsCollector = memoryMetricsCollector;
             _netWorkMetricsCollector = netWorkMetricsCollector;
             _metricsDeliverer = metricsDeliverer;
+            var options = optionsAccessor.Value;
+            _captureInterval = options.CaptureInterval;
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            _scheduler = new Timer(Callback, null, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(5));
+            _scheduler = new Timer(Callback, null, TimeSpan.FromSeconds(5), _captureInterval);
             return Task.CompletedTask;
 
             async void Callback(object state)

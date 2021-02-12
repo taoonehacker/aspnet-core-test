@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace Tao.Project.Console
@@ -13,12 +14,15 @@ namespace Tao.Project.Console
 
             var collector = new FakeMetricsCollector();
             new HostBuilder()
-                .ConfigureServices(svcs =>
+                .ConfigureAppConfiguration(builder => builder.AddJsonFile("appSettings.json"))
+                .ConfigureServices((context, svcs) =>
                     svcs.AddSingleton<IPerformanceMetricsCollector>(collector)
                         .AddSingleton<IMemoryMetricsCollector>(collector)
                         .AddSingleton<INetWorkMetricsCollector>(collector)
                         .AddSingleton<IMetricsDeliverer, FakeMetricsDelivever>()
-                        .AddHostedService<PerformanceMetricsCollector>())
+                        .AddHostedService<PerformanceMetricsCollector>()
+                        .AddOptions().Configure<MetricsCollectionOptions>(context.Configuration.GetSection("MetricsCollection"))
+                )
                 .Build()
                 .Run();
         }

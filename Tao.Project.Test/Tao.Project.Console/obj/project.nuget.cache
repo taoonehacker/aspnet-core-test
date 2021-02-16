@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "PYSVSXJ4dZsBN61DG1nD4eK+0hgVRPpEMxDrrrEi0aX2NurqrngbUln0oF2/oV1UP6GHlrWIh0vGlol9PjUhCQ==",
+  "dgSpecHash": "wke+mDGIdDE3ZaVzBXUx2SMPwC89WLj1riYUXvPHEVxrC8CsqtCKC1qBmDOx7FUwI2ngcMhHJ/khKLETPQJkfg==",
   "success": true,
   "projectFilePath": "/Users/tao/Projects/GitHub/aspnet-core-test/Tao.Project.Test/Tao.Project.Console/Tao.Project.Console.csproj",
   "expectedPackageFiles": [

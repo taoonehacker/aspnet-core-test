@@ -10,8 +10,8 @@ namespace Tao.Project.IOC
 
         public MapToAttribute(Type serviceType, Lifetime lifetime)
         {
-            serviceType = serviceType;
-            lifetime = lifetime;
+            ServiceType = serviceType;
+            Lifetime = lifetime;
         }
     }
 }

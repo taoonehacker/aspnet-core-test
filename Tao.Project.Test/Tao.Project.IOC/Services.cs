@@ -23,4 +23,13 @@ namespace Tao.Project.IOC
     public class Foo : Base, IFoo
     {
     }
+
+    public interface IGux
+    {
+    }
+
+    [MapTo(typeof(IGux), Lifetime.Root)]
+    public class Gux : Base, IGux
+    {
+    }
 }

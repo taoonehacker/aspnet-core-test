@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
+using System.Reflection;
 
 namespace Tao.Project.IOC
 {
@@ -52,6 +54,21 @@ namespace Tao.Project.IOC
         public static Cat Register<TService>(this Cat cat, Func<Cat, TService> factory, Lifetime lifetime)
         {
             cat.Register(new ServiceRegistry(typeof(TService), lifetime, (_, arguments) => factory(_)));
+            return cat;
+        }
+
+        public static Cat Register(this Cat cat, Assembly assembly)
+        {
+            var typedAttributes = from type in assembly.GetExportedTypes()
+                let attribute = type.GetCustomAttribute<MapToAttribute>()
+                where attribute != null
+                select new {ServiceType = type, Attribute = attribute};
+
+            foreach (var typedAttribute in typedAttributes)
+            {
+                cat.Register(typedAttribute.Attribute.ServiceType, typedAttribute.ServiceType, typedAttribute.Attribute.Lifetime);
+            }
+
             return cat;
         }
 

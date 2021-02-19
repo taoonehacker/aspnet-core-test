@@ -1241,28 +1241,26 @@
     ]
   },
   "packageFolders": {
-    "/Users/tao/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\Xin Office\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/tao/Projects/GitHub/aspnet-core-test/Tao.Project.Test/Tao.Project.Console/Tao.Project.Console.csproj",
+      "projectUniqueName": "C:\\WorkSpace\\GitCode\\Branches\\GitHub\\aspnet-core-test\\Tao.Project.Test\\Tao.Project.Console\\Tao.Project.Console.csproj",
       "projectName": "Tao.Project.Console",
-      "projectPath": "/Users/tao/Projects/GitHub/aspnet-core-test/Tao.Project.Test/Tao.Project.Console/Tao.Project.Console.csproj",
-      "packagesPath": "/Users/tao/.nuget/packages/",
-      "outputPath": "/Users/tao/Projects/GitHub/aspnet-core-test/Tao.Project.Test/Tao.Project.Console/obj/",
+      "projectPath": "C:\\WorkSpace\\GitCode\\Branches\\GitHub\\aspnet-core-test\\Tao.Project.Test\\Tao.Project.Console\\Tao.Project.Console.csproj",
+      "packagesPath": "C:\\Users\\Xin Office\\.nuget\\packages\\",
+      "outputPath": "C:\\WorkSpace\\GitCode\\Branches\\GitHub\\aspnet-core-test\\Tao.Project.Test\\Tao.Project.Console\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "/Users/tao/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Xin Office\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1301,7 +1299,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }

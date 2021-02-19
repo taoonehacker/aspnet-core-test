@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tao.Project.Console", "Tao.Project.Console\Tao.Project.Console.csproj", "{C6CAA2EC-675D-438E-BF6B-DFAF6EEC83C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tao.Project.IOC", "Tao.Project.IOC\Tao.Project.IOC.csproj", "{D2BC0E2B-EF9A-437C-953E-1AEAC4F7089C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{C6CAA2EC-675D-438E-BF6B-DFAF6EEC83C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6CAA2EC-675D-438E-BF6B-DFAF6EEC83C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6CAA2EC-675D-438E-BF6B-DFAF6EEC83C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2BC0E2B-EF9A-437C-953E-1AEAC4F7089C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2BC0E2B-EF9A-437C-953E-1AEAC4F7089C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2BC0E2B-EF9A-437C-953E-1AEAC4F7089C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2BC0E2B-EF9A-437C-953E-1AEAC4F7089C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

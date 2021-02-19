@@ -1,4 +1,59 @@
-$HEADER$namespace $NAMESPACE$
+using System;
+using System.Collections.Generic;
+
+namespace Tao.Project.IOC
 {
-  public class $CLASS$ {$END$}
+    /// <summary>
+    /// 服务注册类
+    /// </summary>
+    public class ServiceRegistry
+    {
+        /// <summary>
+        /// 服务类型
+        /// </summary>
+        public Type ServiceType { get; }
+
+        /// <summary>
+        /// 生命周期
+        /// </summary>
+        public Lifetime Lifetime { get; }
+
+        /// <summary>
+        /// 创建服务实例的工厂
+        /// </summary>
+        public Func<Cat, Type[], object> Factory { get; }
+
+        /// <summary>
+        /// 链表Next
+        /// </summary>
+        internal ServiceRegistry Next { get; set; }
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="serviceType"></param>
+        /// <param name="lifetime"></param>
+        /// <param name="factory"></param>
+        public ServiceRegistry(Type serviceType, Lifetime lifetime, Func<Cat, Type[], object> factory)
+        {
+            this.ServiceType = serviceType;
+            this.Lifetime = lifetime;
+            this.Factory = factory;
+        }
+
+        /// <summary>
+        /// 返回当前节点以及后续节点组成的所有ServiceRegistry集合
+        /// </summary>
+        /// <returns></returns>
+        internal IEnumerable<ServiceRegistry> AsEnumerable()
+        {
+            var list = new List<ServiceRegistry>();
+            for (var self = this; self != null; self = self.Next)
+            {
+                list.Add(self);
+            }
+
+            return list;
+        }
+    }
 }

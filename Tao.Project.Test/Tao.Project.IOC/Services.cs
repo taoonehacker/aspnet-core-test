@@ -32,4 +32,23 @@ namespace Tao.Project.IOC
     public class Gux : Base, IGux
     {
     }
+    
+    public interface IBar { }
+    public interface IBaz { }
+    
+    public class Bar : Base, IBar { }
+    public class Baz : Base, IBaz { }
+    
+    public interface IFoobar<T1, T2> { }
+    
+    public class Foobar<T1, T2> : IFoobar<T1, T2>
+    {
+        public IFoo Foo { get; }
+        public IBar Bar { get; }
+        public Foobar(IFoo foo, IBar bar)
+        {
+            Foo = foo;
+            Bar = bar;
+        }
+    }
 }
